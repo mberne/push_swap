@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/08 15:13:15 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/09 13:47:01 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_struct
 int		main(int ac, char **av);
 void	ft_exit(t_struct *s);
 void	create_list(t_struct *s, int ac, char **av);
+void	check_duplicate(t_struct *s);
+int		is_ordered(t_stack s);
 
 void	swap(t_struct *s, t_stack_name name);
 void	push(t_struct *s, t_stack_name name);
