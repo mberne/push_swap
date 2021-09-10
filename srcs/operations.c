@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:17:39 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/09 11:50:29 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/10 12:43:06 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	push(t_struct *s, t_stack_name name)
 			s->b.array[i] = s->b.array[i + 1];
 			i++;
 		}
+		s->a.size++;
 		s->b.size--;
 	}
 	if (name == B && s->a.size > 0)
@@ -89,6 +90,7 @@ void	push(t_struct *s, t_stack_name name)
 			i++;
 		}
 		s->a.size--;
+		s->b.size++;
 	}
 	print_operation(name, PUSH);
 }
