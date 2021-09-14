@@ -2,7 +2,7 @@ NAME		= push_swap
 
 #Sources
 PATH_SRCS	= srcs/
-SRCS		= $(addprefix $(PATH_SRCS), main.c operations.c resolve.c chunk.c)
+SRCS		= $(addprefix $(PATH_SRCS), main.c parsing.c operations.c resolve.c chunk.c utils.c)
 
 #Includes
 PATH_INC	= includes/
