@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/15 13:54:08 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/15 15:37:09 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,16 @@ typedef enum e_stack_name
 	BOTH
 }	t_stack_name;
 
+typedef struct s_elem
+{
+	int	value;
+	int	index;
+}	t_elem;
+
 typedef struct s_stack
 {
-	int	*array;
-	int	size;
+	t_elem	*array;
+	int		size;
 }	t_stack;
 
 typedef struct s_struct
@@ -62,8 +68,11 @@ void	sort_three_numbers(t_struct *s);
 void	sort_five_numbers(t_struct *s);
 void	push_lowest(t_struct *s);
 
+void	chunk(t_struct *s);
+
 int		is_ordered(t_stack stack, int i);
 int		find_lowest(t_stack stack);
+int		ft_sqrt(int nb);
 
 void	print_array(t_struct *s);
 
