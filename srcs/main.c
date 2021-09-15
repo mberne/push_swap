@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:45:08 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/14 12:56:26 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/15 13:15:49 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,7 @@ int	main(int ac, char **av)
 			ft_exit(&s);
 	}
 	else
-	{
-		create_list(&s, ac, av);
-		check_duplicate(&s);
-		if (!is_ordered(s.a, 0))
-			resolve(&s);
-	}
+		resolve(&s, ac, av);
 	free(s.a.array);
 	free(s.b.array);
 	return (EXIT_SUCCESS);

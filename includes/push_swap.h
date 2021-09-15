@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/13 16:03:18 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/15 13:54:08 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,18 @@ void	create_list(t_struct *s, int ac, char **av);
 void	check_duplicate(t_struct *s);
 
 void	swap(t_struct *s, t_stack_name name);
-void	push(t_struct *s, t_stack_name name);
+void	push(t_stack_name name, t_stack *send, t_stack *receive);
 void	rotate(t_struct *s, t_stack_name name);
 void	reverse_rotate(t_struct *s, t_stack_name name);
 void	print_operation(t_stack_name name, t_operation operation);
 
-void	resolve(t_struct *s);
+void	resolve(t_struct *s, int ac, char **av);
 void	sort_three_numbers(t_struct *s);
-void	sort_four_numbers(t_struct *s);
 void	sort_five_numbers(t_struct *s);
+void	push_lowest(t_struct *s);
 
-int		is_ordered(t_stack s, int i);
-int		find_lowest(t_stack s);
+int		is_ordered(t_stack stack, int i);
+int		find_lowest(t_stack stack);
 
 void	print_array(t_struct *s);
 

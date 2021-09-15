@@ -3,3 +3,6 @@
 *.o
 *.a
 push_swap
+checker_Mac
+push_swap_visualizer
+complexity

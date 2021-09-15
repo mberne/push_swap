@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:17:39 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/10 12:43:06 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/15 13:56:30 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,45 +54,28 @@ void	swap(t_struct *s, t_stack_name name)
 	print_operation(name, SWAP);
 }
 
-void	push(t_struct *s, t_stack_name name)
+void	push(t_stack_name name, t_stack *send, t_stack *receive)
 {
 	int	i;
 
-	if (name == A && s->b.size > 0)
+	if (send->size > 0)
 	{
-		i = s->a.size;
+		i = receive->size;
 		while (i > 0)
 		{
-			s->a.array[i] = s->a.array[i - 1];
+			receive->array[i] = receive->array[i - 1];
 			i--;
 		}
-		s->a.array[0] = s->b.array[0];
-		while (i < s->b.size - 1)
+		receive->array[i] = send->array[i];
+		while (i < send->size - 1)
 		{
-			s->b.array[i] = s->b.array[i + 1];
+			send->array[i] = send->array[i + 1];
 			i++;
 		}
-		s->a.size++;
-		s->b.size--;
+		send->size--;
+		receive->size++;
+		print_operation(name, PUSH);
 	}
-	if (name == B && s->a.size > 0)
-	{
-		i = s->b.size;
-		while (i > 0)
-		{
-			s->b.array[i] = s->b.array[i - 1];
-			i--;
-		}
-		s->b.array[0] = s->a.array[0];
-		while (i < s->a.size - 1)
-		{
-			s->a.array[i] = s->a.array[i + 1];
-			i++;
-		}
-		s->a.size--;
-		s->b.size++;
-	}
-	print_operation(name, PUSH);
 }
 
 void	rotate(t_struct *s, t_stack_name name)
@@ -103,23 +86,17 @@ void	rotate(t_struct *s, t_stack_name name)
 	if ((name == A || name == BOTH) && s->a.size > 1)
 	{
 		tmp = s->a.array[0];
-		i = 0;
-		while (i < s->a.size - 1)
-		{
+		i = -1;
+		while (++i < s->a.size - 1)
 			s->a.array[i] = s->a.array[i + 1];
-			i++;
-		}
 		s->a.array[s->a.size - 1] = tmp;
 	}
 	if ((name == B || name == BOTH) && s->b.size > 1)
 	{
 		tmp = s->b.array[0];
-		i = 0;
-		while (i < s->b.size - 1)
-		{
+		i = -1;
+		while (++i < s->b.size - 1)
 			s->b.array[i] = s->b.array[i + 1];
-			i++;
-		}
 		s->b.array[s->b.size - 1] = tmp;
 	}
 	print_operation(name, ROTATE);
@@ -133,23 +110,17 @@ void	reverse_rotate(t_struct *s, t_stack_name name)
 	if ((name == A || name == BOTH) && s->a.size > 1)
 	{
 		tmp = s->a.array[s->a.size - 1];
-		i = s->a.size - 1;
-		while (i > 0)
-		{
+		i = s->a.size;
+		while (--i > 0)
 			s->a.array[i] = s->a.array[i - 1];
-			i--;
-		}
 		s->a.array[0] = tmp;
 	}
 	if ((name == B || name == BOTH) && s->b.size > 1)
 	{
 		tmp = s->b.array[s->b.size - 1];
-		i = s->b.size - 1;
+		i = s->b.size;
 		while (i > 0)
-		{
 			s->b.array[i] = s->b.array[i - 1];
-			i--;
-		}
 		s->b.array[0] = tmp;
 	}
 	print_operation(name, REVERSE_ROTATE);
