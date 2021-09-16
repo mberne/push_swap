@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:45:08 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/15 16:25:44 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/16 11:04:30 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_array(t_struct *s)
 	i = 0;
 	while (i < s->a.size)
 	{
-		printf("%d ", s->a.array[i].value);
+		printf("%d[%d] ", s->a.array[i].value, s->a.array[i].index);
 		i++;
 	}
 	printf("\n");
@@ -61,7 +61,7 @@ void	print_array(t_struct *s)
 	i = 0;
 	while (i < s->b.size)
 	{
-		printf("%d ", s->b.array[i].value);
+		printf("%d[%d] ", s->b.array[i].value, s->b.array[i].index);
 		i++;
 	}
 	printf("\n");

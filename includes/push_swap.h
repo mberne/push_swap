@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/15 15:37:09 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/16 14:53:47 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ void	resolve(t_struct *s, int ac, char **av);
 void	sort_three_numbers(t_struct *s);
 void	sort_five_numbers(t_struct *s);
 void	push_lowest(t_struct *s);
+void	create_index(t_struct *s);
 
 void	chunk(t_struct *s);
+void	create_chunk(t_struct *s, int chunk_size, int *current_index);
+int		find_hold_first(t_struct *s, int chunk_size, int current_index);
+int		find_hold_second(t_struct *s, int chunk_size, int current_index);
+void	ra_or_rra(t_struct *s, int first, int second);
 
 int		is_ordered(t_stack stack, int i);
 int		find_lowest(t_stack stack);

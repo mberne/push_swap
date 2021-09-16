@@ -6,11 +6,31 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/15 16:25:44 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/16 15:15:56 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	create_index(t_struct *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < s->a.size)
+	{
+		s->a.array[i].index = i;
+		j = i;
+		while (j > 0 && s->a.array[i].value < s->a.array[j - 1].value)
+		{
+			s->a.array[j - 1].index += 1;
+			s->a.array[i].index -= 1;
+			j--;
+		}
+		i++;
+	}
+}
 
 void	push_lowest(t_struct *s)
 {
@@ -57,9 +77,11 @@ void	sort_three_numbers(t_struct *s)
 {
 	if (!is_ordered(s->a, 0))
 	{
-		if (s->a.array[0].value < s->a.array[2].value && s->a.array[1].value < s->a.array[2].value)
+		if (s->a.array[0].value < s->a.array[2].value
+			&& s->a.array[1].value < s->a.array[2].value)
 			swap(s, A);
-		else if (s->a.array[0].value > s->a.array[2].value && s->a.array[1].value > s->a.array[2].value)
+		else if (s->a.array[0].value > s->a.array[2].value
+			&& s->a.array[1].value > s->a.array[2].value)
 		{
 			if (s->a.array[0].value > s->a.array[1].value)
 				swap(s, A);
@@ -78,6 +100,7 @@ void	resolve(t_struct *s, int ac, char **av)
 {
 	create_list(s, ac, av);
 	check_duplicate(s);
+	print_array(s);
 	if (!is_ordered(s->a, 0))
 	{
 		if (s->a.size == 2)
@@ -87,6 +110,10 @@ void	resolve(t_struct *s, int ac, char **av)
 		else if (s->a.size == 4 || s->a.size == 5)
 			sort_five_numbers(s);
 		else
-			chunk(s);
+		{
+			create_index(s);
+			// chunk(s);
+		}
 	}
+	print_array(s);
 }
