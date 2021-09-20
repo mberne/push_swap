@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:45:08 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 11:04:30 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 15:06:32 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	print_array(t_struct *s)
 		printf("%d[%d] ", s->b.array[i].value, s->b.array[i].index);
 		i++;
 	}
-	printf("\n");
+	printf("\n\n");
 }

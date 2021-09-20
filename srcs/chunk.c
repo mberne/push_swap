@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:41:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 15:08:15 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 15:22:48 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,18 @@ int	find_hold_first(t_struct *s, int chunk_size, int current_index)
 	return (0);
 }
 
-void	create_chunk(t_struct *s, int chunk_size, int *current_index)
+void	push_chunk(t_struct *s, int chunk_size)
 {
-	int	i;
-	int	first;
-	int	second;
+	int			i;
+	int			first;
+	int			second;
+	static int	current_index = 0;
 
 	i = 0;
 	while (i < chunk_size)
 	{
-		first = find_hold_first(s, chunk_size, *current_index);
-		second = find_hold_second(s, chunk_size, *current_index);
+		first = find_hold_first(s, chunk_size, current_index);
+		second = find_hold_second(s, chunk_size, current_index);
 		ra_or_rra(s, first, second);
 		push(B, &s->a, &s->b);
 		i++;
@@ -111,16 +112,25 @@ void	chunk(t_struct *s)
 	int	i;
 	int	num_of_chunk;
 	int	chunk_size;
-	int	current_index;
+	int	modulo_chunk_size;
 
 	i = 0;
 	num_of_chunk = ft_sqrt(s->a.size) / 2;
 	chunk_size = s->a.size / num_of_chunk;
-	current_index = 0;
-	while (i < num_of_chunk)
+	while (i <= num_of_chunk)
 	{
-		create_chunk(s, chunk_size, &current_index);
+		push_chunk(s, chunk_size);
 		i++;
 	}
-	// vider stack B en rangeant
+	modulo_chunk_size = s->b.size % num_of_chunk;
+	if (modulo_chunk_size != 0)
+	{
+		final_order(s, modulo_chunk_size);
+		i--;
+	}
+	while (i > 0)
+	{
+		final_order(s, chunk_size);
+		i--;
+	}
 }

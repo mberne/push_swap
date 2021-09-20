@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:57:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 13:20:13 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 14:43:48 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	create_list(t_struct *s, int ac, char **av)
 	i = 0;
 	s->a.size = ac - 1;
 	s->b.size = 0;
-	s->a.array = ft_calloc(s->a.size, sizeof(int));
-	s->b.array = ft_calloc(s->a.size, sizeof(int));
+	s->a.array = ft_calloc(s->a.size, sizeof(t_elem));
+	s->b.array = ft_calloc(s->a.size, sizeof(t_elem));
 	if (!s->a.array || !s->b.array)
 		ft_exit(s);
 	while (i < s->a.size)

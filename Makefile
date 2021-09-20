@@ -2,7 +2,7 @@ NAME		= push_swap
 
 #Sources
 PATH_SRCS	= srcs/
-SRCS		= $(addprefix $(PATH_SRCS), main.c parsing.c operations.c resolve.c chunk.c utils.c)
+SRCS		= $(addprefix $(PATH_SRCS), main.c parsing.c operations.c resolve.c chunk.c chunk_2.c utils.c)
 
 #Includes
 PATH_INC	= includes/
@@ -13,7 +13,7 @@ LIBFT		= libft.a
 
 #Other
 OBJS		= $(SRCS:.c=.o)
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
 RM			= rm -f
 
 all bonus:	libs $(NAME)

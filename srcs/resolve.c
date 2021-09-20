@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 15:15:56 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 15:55:11 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	create_index(t_struct *s)
 	i = 0;
 	while (i < s->a.size)
 	{
-		s->a.array[i].index = i;
-		j = i;
-		while (j > 0 && s->a.array[i].value < s->a.array[j - 1].value)
+		s->a.array[i].index = 0;
+		j = 0;
+		while (j < s->a.size)
 		{
-			s->a.array[j - 1].index += 1;
-			s->a.array[i].index -= 1;
-			j--;
+			if (s->a.array[i].value > s->a.array[j].value)
+				s->a.array[i].index++;
+			j++;
 		}
 		i++;
 	}
@@ -100,7 +100,6 @@ void	resolve(t_struct *s, int ac, char **av)
 {
 	create_list(s, ac, av);
 	check_duplicate(s);
-	print_array(s);
 	if (!is_ordered(s->a, 0))
 	{
 		if (s->a.size == 2)
@@ -112,8 +111,7 @@ void	resolve(t_struct *s, int ac, char **av)
 		else
 		{
 			create_index(s);
-			// chunk(s);
+			chunk(s);
 		}
 	}
-	print_array(s);
 }

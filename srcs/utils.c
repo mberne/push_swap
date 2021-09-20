@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:58:30 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 13:20:20 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 16:41:05 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,32 @@ int	find_lowest(t_stack stack)
 	int	value;
 
 	i = 1;
-	value = stack.array[0].value;
 	index = 0;
+	value = stack.array[0].value;
 	while (i < stack.size)
 	{
 		if (stack.array[i].value < value)
+		{
+			value = stack.array[i].value;
+			index = i;
+		}
+		i++;
+	}
+	return (index);
+}
+
+int	find_highest(t_stack stack, int chunk_size)
+{
+	int	i;
+	int	index;
+	int	value;
+
+	i = 1;
+	index = 0;
+	value = stack.array[0].value;
+	while (i < chunk_size && i < stack.size)
+	{
+		if (stack.array[i].value > value)
 		{
 			value = stack.array[i].value;
 			index = i;

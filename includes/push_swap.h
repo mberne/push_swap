@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/16 14:53:47 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/20 15:35:44 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,17 @@ void	push_lowest(t_struct *s);
 void	create_index(t_struct *s);
 
 void	chunk(t_struct *s);
-void	create_chunk(t_struct *s, int chunk_size, int *current_index);
+void	push_chunk(t_struct *s, int chunk_size);
 int		find_hold_first(t_struct *s, int chunk_size, int current_index);
 int		find_hold_second(t_struct *s, int chunk_size, int current_index);
 void	ra_or_rra(t_struct *s, int first, int second);
 
+void	final_order(t_struct *s, int chunk_size);
+void	push_highest(t_struct *s, int highest);
+
 int		is_ordered(t_stack stack, int i);
 int		find_lowest(t_stack stack);
+int		find_highest(t_stack stack, int chunk_size);
 int		ft_sqrt(int nb);
 
 void	print_array(t_struct *s);
