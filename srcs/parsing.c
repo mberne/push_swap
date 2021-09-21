@@ -6,11 +6,31 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:57:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/20 14:43:48 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 14:19:23 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	create_index(t_struct *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < s->a.size)
+	{
+		s->a.array[i].index = 0;
+		j = 0;
+		while (j < s->a.size)
+		{
+			if (s->a.array[i].value > s->a.array[j].value)
+				s->a.array[i].index++;
+			j++;
+		}
+		i++;
+	}
+}
 
 void	check_duplicate(t_struct *s)
 {

@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 11:05:43 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 14:21:29 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	chunk(t_struct *s)
 		i++;
 	}
 	modulo_chunk_size = s->b.size % num_of_chunk;
+	i--;
 	if (modulo_chunk_size != 0)
 	{
 		final_order(s, modulo_chunk_size);

@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 11:08:07 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 14:19:09 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		ft_exit(t_struct *s);
 
 void		create_list(t_struct *s, int ac, char **av);
 void		check_duplicate(t_struct *s);
+void		create_index(t_struct *s);
 
 void		swap(t_struct *s, t_stack_name name);
 void		push(t_stack_name name, t_stack *send, t_stack *receive);
@@ -79,11 +80,10 @@ void		final_order(t_struct *s, int chunk_size);
 void		push_highest(t_struct *s, int highest);
 
 int			is_ordered(t_stack stack, int i);
-void		create_index(t_struct *s);
 int			find_lowest(t_stack stack);
-int			find_highest(t_stack stack, int chunk_size);
+int			find_highest(t_stack stack);
 int			ft_sqrt(int nb);
 
-// void	print_array(t_struct *s);
+void	print_array(t_struct *s);
 
 #endif
