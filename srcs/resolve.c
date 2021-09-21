@@ -6,29 +6,37 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/20 15:55:11 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 11:05:43 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_index(t_struct *s)
+void	chunk(t_struct *s)
 {
 	int	i;
-	int	j;
+	int	num_of_chunk;
+	int	chunk_size;
+	int	modulo_chunk_size;
 
 	i = 0;
-	while (i < s->a.size)
+	num_of_chunk = ft_sqrt(s->a.size) / 2;
+	chunk_size = s->a.size / num_of_chunk;
+	while (i <= num_of_chunk)
 	{
-		s->a.array[i].index = 0;
-		j = 0;
-		while (j < s->a.size)
-		{
-			if (s->a.array[i].value > s->a.array[j].value)
-				s->a.array[i].index++;
-			j++;
-		}
+		push_chunk(s, chunk_size);
 		i++;
+	}
+	modulo_chunk_size = s->b.size % num_of_chunk;
+	if (modulo_chunk_size != 0)
+	{
+		final_order(s, modulo_chunk_size);
+		i--;
+	}
+	while (i > 0)
+	{
+		final_order(s, chunk_size);
+		i--;
 	}
 }
 

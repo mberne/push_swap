@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:58:30 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/20 16:41:05 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 11:05:45 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,24 @@ int	find_highest(t_stack stack, int chunk_size)
 		i++;
 	}
 	return (index);
+}
+
+void	create_index(t_struct *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < s->a.size)
+	{
+		s->a.array[i].index = 0;
+		j = 0;
+		while (j < s->a.size)
+		{
+			if (s->a.array[i].value > s->a.array[j].value)
+				s->a.array[i].index++;
+			j++;
+		}
+		i++;
+	}
 }

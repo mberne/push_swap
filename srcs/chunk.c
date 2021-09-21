@@ -6,18 +6,15 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:41:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/20 15:22:48 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 11:08:19 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra_or_rra(t_struct *s, int first, int second)
+void	rotation(t_struct *s, t_operation rotation, int first, int second)
 {
-	int	stack_middle;
-
-	stack_middle = s->a.size / 2;
-	if (first < stack_middle && second < stack_middle)
+	if (rotation == ROTATE)
 	{
 		while (first != 0)
 		{
@@ -25,7 +22,7 @@ void	ra_or_rra(t_struct *s, int first, int second)
 			first--;
 		}
 	}
-	else if (first >= stack_middle && second >= stack_middle)
+	else
 	{
 		while (second != s->a.size)
 		{
@@ -33,28 +30,27 @@ void	ra_or_rra(t_struct *s, int first, int second)
 			second++;
 		}
 	}
-	else if (first < stack_middle && second >= stack_middle)
+}
+
+t_operation	ra_or_rra(t_struct *s, int first, int second)
+{
+	int	stack_middle;
+
+	stack_middle = s->a.size / 2;
+	if (first < stack_middle && second < stack_middle)
+		return (ROTATE);
+	else if (first >= stack_middle && second >= stack_middle)
+		return (REVERSE_ROTATE);
+	else
 	{
 		if (s->a.size - first < second)
-		{
-			while (first != 0)
-			{
-				rotate(s, A);
-				first--;
-			}
-		}
+			return (ROTATE);
 		else
-		{
-			while (second != s->a.size)
-			{
-				reverse_rotate(s, A);
-				second++;
-			}
-		}
+			return (REVERSE_ROTATE);
 	}
 }
 
-int	find_hold_second(t_struct *s, int chunk_size, int current_index)
+int	find_second(t_struct *s, int chunk_size, int current_index)
 {
 	int	i;
 	int	last_index;
@@ -71,7 +67,7 @@ int	find_hold_second(t_struct *s, int chunk_size, int current_index)
 	return (0);
 }
 
-int	find_hold_first(t_struct *s, int chunk_size, int current_index)
+int	find_first(t_struct *s, int chunk_size, int current_index)
 {
 	int	i;
 	int	last_index;
@@ -98,39 +94,11 @@ void	push_chunk(t_struct *s, int chunk_size)
 	i = 0;
 	while (i < chunk_size)
 	{
-		first = find_hold_first(s, chunk_size, current_index);
-		second = find_hold_second(s, chunk_size, current_index);
-		ra_or_rra(s, first, second);
+		first = find_first(s, chunk_size, current_index);
+		second = find_second(s, chunk_size, current_index);
+		rotation(s, ra_or_rra(s, first, second), first, second);
 		push(B, &s->a, &s->b);
 		i++;
 	}
 	current_index += chunk_size;
-}
-
-void	chunk(t_struct *s)
-{
-	int	i;
-	int	num_of_chunk;
-	int	chunk_size;
-	int	modulo_chunk_size;
-
-	i = 0;
-	num_of_chunk = ft_sqrt(s->a.size) / 2;
-	chunk_size = s->a.size / num_of_chunk;
-	while (i <= num_of_chunk)
-	{
-		push_chunk(s, chunk_size);
-		i++;
-	}
-	modulo_chunk_size = s->b.size % num_of_chunk;
-	if (modulo_chunk_size != 0)
-	{
-		final_order(s, modulo_chunk_size);
-		i--;
-	}
-	while (i > 0)
-	{
-		final_order(s, chunk_size);
-		i--;
-	}
 }

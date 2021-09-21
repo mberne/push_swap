@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:45:08 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/20 15:06:32 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/21 11:06:41 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,24 @@ int	main(int ac, char **av)
 	return (EXIT_SUCCESS);
 }
 
-void	print_array(t_struct *s)
-{
-	int	i;
+// void	print_array(t_struct *s)
+// {
+// 	int	i;
 
-	printf("\nStack A\n");
-	i = 0;
-	while (i < s->a.size)
-	{
-		printf("%d[%d] ", s->a.array[i].value, s->a.array[i].index);
-		i++;
-	}
-	printf("\n");
-	printf("\nStack B\n");
-	i = 0;
-	while (i < s->b.size)
-	{
-		printf("%d[%d] ", s->b.array[i].value, s->b.array[i].index);
-		i++;
-	}
-	printf("\n\n");
-}
+// 	printf("\nStack A\n");
+// 	i = 0;
+// 	while (i < s->a.size)
+// 	{
+// 		printf("%d[%d] ", s->a.array[i].value, s->a.array[i].index);
+// 		i++;
+// 	}
+// 	printf("\n");
+// 	printf("\nStack B\n");
+// 	i = 0;
+// 	while (i < s->b.size)
+// 	{
+// 		printf("%d[%d] ", s->b.array[i].value, s->b.array[i].index);
+// 		i++;
+// 	}
+// 	printf("\n\n");
+// }
