@@ -6,11 +6,34 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:45:08 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 13:58:41 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/22 17:13:43 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	resolve(t_struct *s, int ac, char **av)
+{
+	create_list(s, ac, av);
+	check_duplicate(s);
+	if (!is_ordered(s->a, 0))
+	{
+		if (s->a.size == 2)
+			rotate(s, A);
+		else if (s->a.size == 3)
+			sort_three_numbers(s);
+		else if (s->a.size == 4 || s->a.size == 5)
+			sort_five_numbers(s);
+		else
+		{
+			create_index(s);
+			if (s->a.size < 500)
+				chunk(s);
+			else
+				radix(s);
+		}
+	}
+}
 
 void	ft_exit(t_struct *s)
 {
@@ -43,26 +66,4 @@ int	main(int ac, char **av)
 	free(s.a.array);
 	free(s.b.array);
 	return (EXIT_SUCCESS);
-}
-
-void	print_array(t_struct *s)
-{
-	int	i;
-
-	printf("\nStack A\n");
-	i = 0;
-	while (i < s->a.size)
-	{
-		printf("%d[%d] ", s->a.array[i].value, s->a.array[i].index);
-		i++;
-	}
-	printf("\n");
-	printf("\nStack B\n");
-	i = 0;
-	while (i < s->b.size)
-	{
-		printf("%d[%d] ", s->b.array[i].value, s->b.array[i].index);
-		i++;
-	}
-	printf("\n\n");
 }

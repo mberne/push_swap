@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:41:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 11:08:19 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/22 15:57:29 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_operation	ra_or_rra(t_struct *s, int first, int second)
 		return (REVERSE_ROTATE);
 	else
 	{
-		if (s->a.size - first < second)
+		if (s->a.size - first > second)
 			return (ROTATE);
 		else
 			return (REVERSE_ROTATE);

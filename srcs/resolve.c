@@ -6,38 +6,65 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 14:21:29 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/22 17:14:39 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_highest(t_struct *s, int highest)
+{
+	int	i;
+	int	stack_middle;
+
+	stack_middle = s->b.size / 2;
+	if (highest < stack_middle)
+	{
+		i = 0;
+		while (i < highest)
+		{
+			rotate(s, B);
+			i++;
+		}
+	}
+	else
+	{	
+		i = highest;
+		while (i < s->b.size)
+		{
+			reverse_rotate(s, B);
+			i++;
+		}
+	}
+	push(A, &s->b, &s->a);
+}
 
 void	chunk(t_struct *s)
 {
 	int	i;
 	int	num_of_chunk;
 	int	chunk_size;
-	int	modulo_chunk_size;
+	int	highest;
 
 	i = 0;
 	num_of_chunk = ft_sqrt(s->a.size) / 2;
 	chunk_size = s->a.size / num_of_chunk;
-	while (i <= num_of_chunk)
+	while (i <= num_of_chunk && s->a.size > 5)
 	{
 		push_chunk(s, chunk_size);
 		i++;
 	}
-	modulo_chunk_size = s->b.size % num_of_chunk;
-	i--;
-	if (modulo_chunk_size != 0)
+	if (s->a.size == 2 && !is_ordered(s->a, 0))
+		rotate(s, A);
+	else if (s->a.size == 3 && !is_ordered(s->a, 0))
+		sort_three_numbers(s);
+	else if ((s->a.size == 4 && !is_ordered(s->a, 0))
+		|| (s->a.size == 5 && !is_ordered(s->a, 0)))
+		sort_five_numbers(s);
+	while (s->b.size != 0)
 	{
-		final_order(s, modulo_chunk_size);
-		i--;
-	}
-	while (i > 0)
-	{
-		final_order(s, chunk_size);
-		i--;
+		highest = find_highest(s->b);
+		push_highest(s, highest);
 	}
 }
 
@@ -101,26 +128,6 @@ void	sort_three_numbers(t_struct *s)
 			if (s->a.array[0].value < s->a.array[1].value)
 				swap(s, A);
 			rotate(s, A);
-		}
-	}
-}
-
-void	resolve(t_struct *s, int ac, char **av)
-{
-	create_list(s, ac, av);
-	check_duplicate(s);
-	if (!is_ordered(s->a, 0))
-	{
-		if (s->a.size == 2)
-			rotate(s, A);
-		else if (s->a.size == 3)
-			sort_three_numbers(s);
-		else if (s->a.size == 4 || s->a.size == 5)
-			sort_five_numbers(s);
-		else
-		{
-			create_index(s);
-			chunk(s);
 		}
 	}
 }

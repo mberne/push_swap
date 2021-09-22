@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 14:19:09 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/22 17:15:39 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_struct
 
 int			main(int ac, char **av);
 void		ft_exit(t_struct *s);
+void		resolve(t_struct *s, int ac, char **av);
 
 void		create_list(t_struct *s, int ac, char **av);
 void		check_duplicate(t_struct *s);
@@ -64,11 +65,11 @@ void		rotate(t_struct *s, t_stack_name name);
 void		reverse_rotate(t_struct *s, t_stack_name name);
 void		print_operation(t_stack_name name, t_operation operation);
 
-void		resolve(t_struct *s, int ac, char **av);
 void		sort_three_numbers(t_struct *s);
 void		sort_five_numbers(t_struct *s);
 void		push_lowest(t_struct *s);
 void		chunk(t_struct *s);
+void		push_highest(t_struct *s, int highest);
 
 void		push_chunk(t_struct *s, int chunk_size);
 int			find_first(t_struct *s, int chunk_size, int current_index);
@@ -76,14 +77,11 @@ int			find_second(t_struct *s, int chunk_size, int current_index);
 t_operation	ra_or_rra(t_struct *s, int first, int second);
 void		rotation(t_struct *s, t_operation rotation, int first, int second);
 
-void		final_order(t_struct *s, int chunk_size);
-void		push_highest(t_struct *s, int highest);
+void		radix(t_struct *s);
 
 int			is_ordered(t_stack stack, int i);
 int			find_lowest(t_stack stack);
 int			find_highest(t_stack stack);
 int			ft_sqrt(int nb);
-
-void	print_array(t_struct *s);
 
 #endif

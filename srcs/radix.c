@@ -1,54 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_2.c                                          :+:      :+:    :+:   */
+/*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:05:10 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 14:22:22 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/22 17:15:20 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_highest(t_struct *s, int highest)
+void	radix(t_struct *s)
 {
 	int	i;
-	int	stack_middle;
+	int	bit;
 
-	stack_middle = s->b.size / 2;
-	if (highest < stack_middle)
+	bit = 0;
+	while (!is_ordered(s->a, 0))
 	{
-		i = 0;
-		while (i < highest)
+		i = s->a.size;
+		while (i > 0)
 		{
-			rotate(s, B);
-			i++;
+			if ((s->a.array[0].index >> bit) & 1)
+				rotate(s, A);
+			else
+				push(B, &s->a, &s->b);
+			i--;
 		}
-	}
-	else
-	{	
-		i = highest;
-		while (i < s->b.size)
-		{
-			reverse_rotate(s, B);
-			i++;
-		}
-	}
-	push(A, &s->b, &s->a);
-}
-
-void	final_order(t_struct *s, int chunk_size)
-{
-	int	i;
-	int	highest;
-
-	i = 0;
-	while (i < chunk_size)
-	{
-		highest = find_highest(s->b);
-		push_highest(s, highest);
-		i++;
+		while (s->b.size != 0)
+			push(A, &s->b, &s->a);
+		bit++;
 	}
 }
