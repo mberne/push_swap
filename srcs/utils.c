@@ -6,11 +6,19 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:58:30 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/21 14:19:13 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 15:45:55 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_exit(t_struct *s)
+{
+	free(s->a.array);
+	free(s->b.array);
+	printf("Error\n");
+	exit(EXIT_FAILURE);
+}
 
 int	ft_sqrt(int nb)
 {

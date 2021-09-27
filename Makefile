@@ -3,7 +3,21 @@ NAME_CHK	= checker
 
 #Sources
 PATH_SRCS	= srcs/
-SRCS		= $(addprefix $(PATH_SRCS), main.c parsing.c operations.c resolve.c chunk.c radix.c utils.c)
+SRCS		=							\
+				main.c					\
+				parsing.c				\
+				operations.c			\
+				resolve.c				\
+				few_integers.c			\
+				chunk.c					\
+				radix.c					\
+				utils.c					\
+
+SRCS_CHK	=							\
+				checker.c				\
+				parsing.c				\
+				operations_checker.c	\
+				utils.c					\
 
 #Includes
 PATH_INC	= includes/
@@ -12,33 +26,40 @@ HEADER		= $(addprefix $(PATH_INC), push_swap.h)
 #Lib
 LIBFT		= libft.a
 
-#Other
-OBJS		= $(SRCS:.c=.o)
-CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
-RM			= rm -f
+#Objects
+PATH_OBJS	= objs/
+OBJS		= $(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
+OBJS_CHK	= $(addprefix $(PATH_OBJS), $(SRCS_CHK:.c=.o))
 
-all bonus:	libs $(NAME) $(NAME_CHK)
+#Other
+CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
+
+all:	libs $(NAME)
+
+bonus:	all $(NAME_CHK)
+
+$(PATH_OBJS)%.o:		$(PATH_SRCS)%.c	$(HEADER)
+			@mkdir -p $(dir $@)
+			gcc $(CFLAGS) -c $< -o $@ -I $(PATH_INC)
 
 $(NAME):	$(OBJS) $(LIBFT)
 			gcc $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) -I $(PATH_INC)
 
-$(NAME_CHK):$(OBJS) $(LIBFT)
-			gcc $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME_CHK) -I $(PATH_INC)
+$(NAME_CHK):$(OBJS_CHK) $(LIBFT)
+			gcc $(CFLAGS) $(OBJS_CHK) $(LIBFT) -o $(NAME_CHK) -I $(PATH_INC)
 
 libs:
 			$(MAKE) -C libft
 			ln -sf libft/$(LIBFT) .
 
-%.o:		%.c	$(HEADER)
-			gcc $(CFLAGS) -c $< -o ${<:.c=.o} -I $(PATH_INC)
-
 clean:
-			${MAKE} clean -C libft
-			$(RM) $(OBJS)
+			$(MAKE) clean -C libft
+			rm -f $(OBJS) $(OBJS_CHK)
 
-fclean:		
-			${MAKE} fclean -C libft
-			$(RM) $(OBJS) $(NAME) $(NAME_CHK) $(LIBFT)
+fclean:
+			$(MAKE) fclean -C libft
+			rm -f $(OBJS) $(OBJS_CHK) $(NAME) $(NAME_CHK) $(LIBFT)
+
 re:			fclean all
 
 .PHONY:		all clean fclean re libs
