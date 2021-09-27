@@ -32,7 +32,7 @@ OBJS		= $(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
 OBJS_CHK	= $(addprefix $(PATH_OBJS), $(SRCS_CHK:.c=.o))
 
 #Other
-CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS		= -Wall -Wextra -Werror
 
 all:	libs $(NAME)
 
