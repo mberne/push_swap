@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 14:01:36 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/27 16:26:03 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/28 11:39:06 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_isnumber(char *s)
 
 	i = ft_strlen(s);
 	j = 0;
-	if (i == 0)
-		return (0);
 	if (s[0] == '-')
 		j++;
+	if ((i == 1 && j == 1) || i == 0)
+		return (0);
 	while (ft_isdigit(s[j]))
 		j++;
 	if (i == j)

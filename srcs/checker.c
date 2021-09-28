@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:30:07 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/27 16:12:15 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/28 11:41:18 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int ac, char **av)
 
 	ret = EXIT_FAILURE;
 	if (ac <= 1)
-		ft_exit(&s);
+		exit(EXIT_FAILURE);
 	else
 	{
 		create_list(&s, ac, av);
