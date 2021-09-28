@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:33:45 by mberne            #+#    #+#             */
-/*   Updated: 2021/03/05 13:19:04 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/28 12:01:45 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void			*ft_memset(void *b, int c, size_t len);
 */
 int				ft_isnumber(char *s);
 int				ft_atoi(const char *str);
+long			ft_atol(const char *str);
 char			*ft_itoa(int n);
 int				ft_atoi_base(char *str, char *base);
 

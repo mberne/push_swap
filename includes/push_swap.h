@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/27 16:15:03 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/28 12:02:52 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef enum e_stack_name
 
 typedef struct s_elem
 {
-	int	value;
-	int	index;
+	long	value;
+	int		index;
 }	t_elem;
 
 typedef struct s_stack
