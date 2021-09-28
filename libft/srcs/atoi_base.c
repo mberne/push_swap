@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   atoi_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 14:01:24 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/15 14:01:27 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/28 15:07:01 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_base(char *base)
+static int	ft_base(char *base)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ int	ft_base(char *base)
 		return (1);
 }
 
-int	get_nb(char str, char *base)
+static int	get_nb(char str, char *base)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ int	get_nb(char str, char *base)
 	return (i);
 }
 
-int	ft_baselen(char *base)
+static int	ft_baselen(char *base)
 {
 	int	baselen;
 
@@ -58,7 +58,7 @@ int	ft_baselen(char *base)
 	return (baselen);
 }
 
-int	inbase(char str, char *base)
+static int	inbase(char str, char *base)
 {
 	int	i;
 
