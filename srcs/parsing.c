@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:57:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/29 13:45:08 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 17:14:03 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,12 @@ void	check_duplicate(t_struct *s)
 	}
 }
 
-void	create_list(t_struct *s, int ac, char **av)
+void	create_list(t_struct *s, char **av)
 {
-	int	i;
+	int		i;
+	char	*tmp;
 
 	i = 0;
-	s->a.size = ac - 1;
-	s->b.size = 0;
 	s->a.array = ft_calloc(s->a.size, sizeof(t_elem));
 	s->b.array = ft_calloc(s->a.size, sizeof(t_elem));
 	if (!s->a.array || !s->b.array)
@@ -66,10 +65,14 @@ void	create_list(t_struct *s, int ac, char **av)
 	{
 		if (ft_isnumber(av[i + 1]))
 		{
-			s->a.array[i].value = ft_atol(av[i + 1]);
-			if (INT32_MIN > s->a.array[i].value
-				|| s->a.array[i].value > INT32_MAX)
+			s->a.array[i].value = ft_atoi(av[i + 1]);
+			tmp = ft_itoa(s->a.array[i].value);
+			if (ft_strncmp(tmp, av[i + 1], ft_strlen(av[i + 1])))
+			{
+				free(tmp);
 				ft_exit(s);
+			}
+			free(tmp);
 		}
 		else
 			ft_exit(s);

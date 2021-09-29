@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:42:59 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/28 12:02:52 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 17:14:19 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			main(int ac, char **av);
 int			read_answer(t_struct *s);
 void		make_instruction(t_struct *s, char *instruction);
 
-void		create_list(t_struct *s, int ac, char **av);
+void		create_list(t_struct *s, char **av);
 void		check_duplicate(t_struct *s);
 void		create_index(t_struct *s);
 

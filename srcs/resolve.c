@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/29 15:16:12 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 17:14:08 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	chunk(t_struct *s)
 
 void	resolve(t_struct *s, int ac, char **av)
 {
-	create_list(s, ac, av);
+	s->a.size = ac - 1;
+	s->b.size = 0;
+	create_list(s, av);
 	check_duplicate(s);
 	if (!is_ordered(s->a, 0))
 	{
