@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:41:50 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/22 15:57:29 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 15:13:55 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	push_chunk(t_struct *s, int chunk_size)
 	static int	current_index = 0;
 
 	i = 0;
-	while (i < chunk_size)
+	while (s->a.size && i < chunk_size)
 	{
 		first = find_first(s, chunk_size, current_index);
 		second = find_second(s, chunk_size, current_index);

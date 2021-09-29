@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:49:19 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/27 13:28:44 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 15:16:12 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	push_highest(t_struct *s, int highest)
 		}
 	}
 	else
-	{	
+	{
 		i = highest;
 		while (i < s->b.size)
 		{
@@ -49,18 +49,11 @@ void	chunk(t_struct *s)
 	i = 0;
 	num_of_chunk = ft_sqrt(s->a.size) / 2;
 	chunk_size = s->a.size / num_of_chunk;
-	while (i <= num_of_chunk && s->a.size > 5)
+	while (i <= num_of_chunk)
 	{
 		push_chunk(s, chunk_size);
 		i++;
 	}
-	if (s->a.size == 2 && !is_ordered(s->a, 0))
-		rotate(s, A);
-	else if (s->a.size == 3 && !is_ordered(s->a, 0))
-		sort_three_numbers(s);
-	else if ((s->a.size == 4 && !is_ordered(s->a, 0))
-		|| (s->a.size == 5 && !is_ordered(s->a, 0)))
-		sort_five_numbers(s);
 	while (s->b.size != 0)
 	{
 		highest = find_highest(s->b);
