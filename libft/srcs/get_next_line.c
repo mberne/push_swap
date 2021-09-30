@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:56:11 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/28 15:10:29 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 10:16:00 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	fill_buffer(char **buffer, int fd, int *return_read, char **tmp)
 			return (-1);
 		}
 		(*tmp)[*return_read] = '\0';
-		*buffer = ft_strjoin(*buffer, *tmp);
+		*buffer = ft_strjoin_free_s1(*buffer, *tmp);
 		if (!*buffer)
 		{
 			free(*tmp);

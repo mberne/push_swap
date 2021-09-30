@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:30:07 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/30 10:06:06 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 10:17:52 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	read_answer(t_struct *s)
 	{
 		ret = get_next_line(0, &instruction);
 		if (ret == -1)
+		{
+			free(instruction);
 			return (EXIT_FAILURE);
+		}
 		else if (ret == 0)
 		{
 			if (*instruction)
