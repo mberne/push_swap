@@ -6,7 +6,7 @@
 /*   By: mberne <mberne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:30:07 by mberne            #+#    #+#             */
-/*   Updated: 2021/09/29 15:49:43 by mberne           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 09:56:35 by mberne           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ int	main(int ac, char **av)
 	t_struct	s;
 	int			ret;
 
-	ret = EXIT_FAILURE;
 	if (ac <= 1)
 		exit(EXIT_FAILURE);
 	else
 	{
-		create_list(&s, ac, av);
+		s.a.size = ac - 1;
+		s.b.size = 0;
+		create_list(&s, av);
 		check_duplicate(&s);
 		ret = read_answer(&s);
 		if (ret == EXIT_SUCCESS)
