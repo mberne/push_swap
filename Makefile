@@ -38,7 +38,7 @@ all:	libs $(NAME)
 
 bonus:	all $(NAME_CHK)
 
-$(PATH_OBJS)%.o:		$(PATH_SRCS)%.c	$(HEADER)
+$(PATH_OBJS)%.o:		$(PATH_SRCS)%.c	$(HEADER) $(LIBFT)
 			@mkdir -p $(dir $@)
 			gcc $(CFLAGS) -c $< -o $@ -I $(PATH_INC)
 
